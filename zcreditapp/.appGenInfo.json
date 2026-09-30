@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Wed Mar 11 2026 01:44:35 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://pkynj-de2app.porkyproducts.loc:8000/sap/opu/odata4/sap/zsb_creditapp_db/srvd/sap/zsd_creditapp_db/0001/",
+    "appName": "zcreditapp",
+    "appTitle": "Credit Application Management",
+    "appDescription": "Credit Application Management",
+    "appNamespace": "porky.creditapp",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.108.44",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.20.4",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "ZC_CREDITAPP_DASHBOARD"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

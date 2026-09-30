@@ -1,0 +1,172 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "zselectorbiller",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.19.3",
+      "toolsId": "f839469b-e0c8-426b-91ac-853a212a42aa"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_selector_biller/srvd/sap/zsd_selector_biller_partner/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "zselectorbiller-manage": {
+          "semanticObject": "zselectorbiller",
+          "action": "manage",
+          "title": "{{zselectorbiller-manage.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.44",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zselectorbiller.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZCSD_SELECTOR_BILLER_PARTNERList",
+          "target": "ZCSD_SELECTOR_BILLER_PARTNERList"
+        },
+        {
+          "pattern": "ZCSD_SELECTOR_BILLER_PARTNER({key}):?query:",
+          "name": "ZCSD_SELECTOR_BILLER_PARTNERObjectPage",
+          "target": "ZCSD_SELECTOR_BILLER_PARTNERObjectPage"
+        }
+      ],
+      "targets": {
+        "ZCSD_SELECTOR_BILLER_PARTNERList": {
+          "type": "Component",
+          "id": "ZCSD_SELECTOR_BILLER_PARTNERList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+                "tableSettings": {
+                "type": "GridTable",
+                "inlineAction": {
+                  "enabled": true,
+                  "actions": ["moveUp", "moveDown"]
+                },
+                "multiSelect": true
+                },
+              "contextPath": "/ZCSD_SELECTOR_BILLER_PARTNER",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZCSD_SELECTOR_BILLER_PARTNER": {
+                  "detail": {
+                    "route": "ZCSD_SELECTOR_BILLER_PARTNERObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  
+                      
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_SELECTOR_BILLER_PARTNERObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_SELECTOR_BILLER_PARTNERObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_SELECTOR_BILLER_PARTNER"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

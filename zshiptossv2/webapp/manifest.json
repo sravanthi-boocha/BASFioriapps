@@ -1,0 +1,170 @@
+{
+  "_version": "1.73.1",
+  "sap.app": {
+    "id": "zshiptossv2",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.26.0",
+      "toolsId": "4caeccfc-ff40-448a-b753-d501b5306a81"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_shipto_partners/srvd/sap/zsd_shipto_partners/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "zshiptossv2-manage": {
+          "semanticObject": "zshiptossv2",
+          "action": "manage",
+          "title": "{{zshiptossv2-manage.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.16",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zshiptossv2.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZCSD_SHIPTO_PARTNERSList",
+          "target": "ZCSD_SHIPTO_PARTNERSList"
+        },
+        {
+          "pattern": "ZCSD_SHIPTO_PARTNERS({key}):?query:",
+          "name": "ZCSD_SHIPTO_PARTNERSObjectPage",
+          "target": "ZCSD_SHIPTO_PARTNERSObjectPage"
+        }
+      ],
+      "targets": {
+        "ZCSD_SHIPTO_PARTNERSList": {
+          "type": "Component",
+          "id": "ZCSD_SHIPTO_PARTNERSList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZCSD_SHIPTO_PARTNERS",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZCSD_SHIPTO_PARTNERS": {
+                  "detail": {
+                    "route": "ZCSD_SHIPTO_PARTNERSObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "TreeTable",
+                    "hierarchyQualifier": "ZH_SHIPTO_PARTNERS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCSD_SHIPTO_PARTNERSObjectPage": {
+          "type": "Component",
+          "id": "ZCSD_SHIPTO_PARTNERSObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCSD_SHIPTO_PARTNERS"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}
